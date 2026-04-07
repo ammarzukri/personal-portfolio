@@ -7,7 +7,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
+	<link rel="icon" type="image/jpeg" href="assets/icons/Logo.jpg">
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = {
@@ -77,10 +77,7 @@
 					<li>
 						<button id="theme-toggle"
 							class="rounded-xl border border-slate-300 p-3 shadow-sm transition hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-800">
-							<svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg"
-								class="hidden h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M10 3.22l.61 1.86h1.95l-1.58 1.15.6 1.86L10 6.93 8.42 8.1l.6-1.86-1.58-1.15h1.95L10 3.22z"/>
-							</svg>
+							<img id="theme-icon-sun" src="assets/icons/sun.png" alt="Sun icon" class="hidden h-6 w-6 object-contain" />
 							<svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg"
 								class="h-6 w-6 text-slate-700 dark:text-slate-200" fill="currentColor" viewBox="0 0 20 20">
 								<path d="M17.293 13.293A8 8 0 016.707 2.707 8 8 0 1017.293 13.293z"/>
@@ -274,22 +271,22 @@
 						</div>
 
 
-						<!-- PROJECT 4 (RIGHT)
+						<!-- PROJECT 4 (RIGHT) -->
 						<div class="relative md:flex md:items-center md:justify-between">
 
 							<div class="hidden md:block md:w-5/12"></div>
 
-							DOT
+							<!-- DOT -->
 							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
 
 							<div class="md:w-5/12">
-								<article class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hotel management" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Hotel Tax Management System</h3>
+								<article id="project-4" data-language="React, Laravel, HTML, Tailwind CSS, JavaScript, Weather API" class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
+									<img src="assets/images/Front Page.png" alt="Weather Forecast" class="mb-4 h-40 w-full rounded-lg object-cover" />
+									<h3 class="mb-3 text-xl font-semibold">Weather Forecast</h3>
 									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										System to manage RM3 per room per night tax collection and reporting for admin dashboard.
+										Website to display weather forecasts for various locations using a public weather API. Implemented user location detection and responsive design for optimal viewing on all devices.
 									</p>
-									<a href="#" class="inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
+									<a href="#" class="project-view-detail inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
 										View Detail
 									</a>
 								</article>
@@ -297,7 +294,7 @@
 						</div>
 
 
-						PROJECT 5 (LEFT)
+						<!-- PROJECT 5 (LEFT)
 						<div class="relative md:flex md:items-center md:justify-between">
 							
 							DOT
@@ -333,7 +330,7 @@
 			</div>
 			<div class="max-h-[85vh] overflow-y-auto">
 				<div class="relative">
-					<img id="project-modal-image" src="" alt="" class="h-72 w-full object-cover md:h-96" />
+					<img id="project-modal-image" src="" alt="" class="h-72 w-full object-contain md:h-96" />
 					<button id="project-modal-prev" type="button" aria-label="Previous photo" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 px-3 py-2 text-xl font-bold text-white transition hover:bg-slate-900 dark:bg-slate-100/90 dark:text-slate-900 dark:hover:bg-slate-100">‹</button>
 					<button id="project-modal-next" type="button" aria-label="Next photo" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 px-3 py-2 text-xl font-bold text-white transition hover:bg-slate-900 dark:bg-slate-100/90 dark:text-slate-900 dark:hover:bg-slate-100">›</button>
 				</div>
@@ -513,7 +510,11 @@
 				{ src: 'assets/images/Project 3.jpg', name: 'Portfolio' },
 				{ src: 'assets/images/Blog.jpg', name: 'Blog' },
 				{ src: 'assets/images/FAQ.jpg', name: 'FAQ' }
-			]
+			],
+			'project-4': [
+				{ src: 'assets/images/Front Page.png', name: 'Weather Forecast' },
+				{ src: 'assets/images/Result Page.png', name: 'Result Page' }
+			],
 		};
 
 		if (typewriterText) {
