@@ -43,13 +43,13 @@ html {
 }
 
 body {
-	font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
-	background-color: var(--bg);
-	color: var(--text);
-	line-height: 1.65;
-	-webkit-font-smoothing: antialiased;
-	transition: background-color 0.3s ease, color 0.3s ease;
-	overflow-x: hidden;
+    font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: clip;
 }
 
 /* paper grain */
@@ -606,4 +606,19 @@ html {
 			transform 0.45s ease var(--d, 0ms);
 	}
 	.js .reveal.is-visible { transform: none; }
+}
+
+/* iPhone Safari safe-area background */
+@supports (-webkit-touch-callout: none) {
+    body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: env(safe-area-inset-top, 0px);
+        background: var(--bg);
+        z-index: 49;
+        pointer-events: none;
+    }
 }
