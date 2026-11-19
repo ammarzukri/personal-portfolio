@@ -39,9 +39,13 @@
 html {
 	scroll-behavior: auto; /* the eased scroll lives in JS */
 	-webkit-text-size-adjust: 100%;
+	background-color: var(--bg);
 }
 
 body {
+	/* keep content out of the notch when an iPhone is in landscape */
+	padding-left: env(safe-area-inset-left, 0px);
+	padding-right: env(safe-area-inset-right, 0px);
 	font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
 	background-color: var(--bg);
 	color: var(--text);
@@ -137,13 +141,22 @@ html {
 }
 
 /* ---------- Nav ---------- */
+/* The header extends under the iPhone status bar / Dynamic Island (viewport-fit=cover)
+   and that strip is solid black; the visible bar below it keeps the page colour. */
 .site-nav {
 	position: fixed;
 	inset: 0 0 auto 0;
 	z-index: 50;
-	background: var(--bg);
+	padding-top: env(safe-area-inset-top, 0px);
+	background: #000;
 	border-bottom: 1px solid var(--rule);
+}
+.nav-bar {
+	background: var(--bg);
 	transition: background-color 0.3s ease;
+}
+#scroll-progress {
+	top: env(safe-area-inset-top, 0px);
 }
 
 .nav-link {
