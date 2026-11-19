@@ -4,489 +4,557 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Ammar Zukri | Software Developer Portfolio</title>
-	<meta name="description" content="Ammar Zukri - Junior Software Developer skilled in Laravel, web development, and building real-world applications."> 
+	<meta name="description" content="Ammar Zukri - Junior Software Developer skilled in Laravel, web development, and building real-world applications.">
+	<meta name="theme-color" content="#151412">
+
+	<!-- Open Graph / Twitter -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Ammar Zukri | Software Developer Portfolio">
+	<meta property="og:description" content="Junior Software Developer skilled in Laravel, Spring Boot and building real-world web applications.">
+	<meta property="og:image" content="assets/images/Hero Image.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Ammar Zukri | Software Developer Portfolio">
+	<meta name="twitter:description" content="Junior Software Developer skilled in Laravel, Spring Boot and building real-world web applications.">
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&display=swap" rel="stylesheet">
 	<link rel="icon" type="image/jpeg" href="assets/icons/Logo.jpg">
+
+	<!-- Apply theme + "js" flag before first paint (no flash of the wrong theme) -->
+	<script>
+		(function () {
+			var root = document.documentElement;
+			root.classList.add('js');
+			var saved = null;
+			try { saved = localStorage.getItem('theme'); } catch (e) {}
+			var prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+			root.classList.toggle('dark', saved ? saved === 'dark' : !prefersLight);
+		})();
+	</script>
+
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script>
 		tailwind.config = {
-			darkMode: 'class'
-		}
-	</script>
-
-	<style>
-		html {
-			scroll-behavior: smooth;
-		}
-
-		body {
-			font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			letter-spacing: 0.01em;
-		}
-
-		h1,
-		h2,
-		h3 {
-			font-family: 'Space Grotesk', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			letter-spacing: 0.02em;
-		}
-
-		@keyframes sectionPulse {
-			0% { background-color: rgba(148, 163, 184, 0); }
-			45% { background-color: rgba(148, 163, 184, 0.18); }
-			100% { background-color: rgba(148, 163, 184, 0); }
-		}
-
-		.section-pulse {
-			animation: sectionPulse 2500ms ease;
-		}
-
-		.section-reveal-ready {
-			opacity: 0;
-			transform: translateY(56px);
-			transition: opacity 3000ms ease, transform 2500ms cubic-bezier(0.22, 1, 0.36, 1);
-		}
-
-		.section-reveal-visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		@media (prefers-reduced-motion: reduce) {
-			.section-reveal-ready {
-				transition-duration: 350ms;
+			darkMode: 'class',
+			theme: {
+				extend: {
+					fontFamily: {
+						sans: ['DM Sans', 'Segoe UI', 'sans-serif'],
+						serif: ['Fraunces', 'Georgia', 'serif'],
+						mono: ['DM Mono', 'ui-monospace', 'monospace']
+					}
+				}
 			}
 		}
-	</style>
+	</script>
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-white text-slate-900 transition-colors dark:bg-slate-900 dark:text-slate-100">
+<body>
+	<a href="#main" class="skip-link">Skip to content</a>
 
-	<nav class="fixed top-0 z-50 w-full border-b border-slate-300 bg-white/90 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/90">
-		<div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4">
-			<a href="#introduction" class="text-2xl font-bold tracking-wide">Ammar Zukri</a>
-			<div class="flex items-center gap-4">
-				<ul class="hidden items-center gap-6 text-base font-medium text-slate-700 md:flex md:text-lg dark:text-slate-200">
-					<li><a href="#introduction" class="transition hover:text-slate-950 dark:hover:text-white">Introduction</a></li>
-					<li><a href="#about" class="transition hover:text-slate-950 dark:hover:text-white">About Me</a></li>
-					<li><a href="#skill" class="transition hover:text-slate-950 dark:hover:text-white">Skill</a></li>
-					<li><a href="#project" class="transition hover:text-slate-950 dark:hover:text-white">Project</a></li>
+	<!-- ===================== NAVBAR ===================== -->
+	<header id="navbar" class="site-nav">
+		<div id="scroll-progress" class="absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></div>
+		<nav class="relative mx-auto flex h-[4.25rem] max-w-[76rem] items-center justify-between px-5 sm:px-8" aria-label="Primary">
+			<a href="#introduction" class="serif text-xl font-semibold tracking-tight" aria-label="Ammar Zukri, back to top">Ammar Zukri<span class="text-[var(--accent)]">.</span></a>
 
-					<!-- DARK MODE BUTTON -->
-					<li>
-						<button id="theme-toggle"
-							class="rounded-xl border border-slate-300 p-3 shadow-sm transition hover:bg-slate-100 dark:border-slate-600 dark:hover:bg-slate-800">
-							<img id="theme-icon-sun" src="assets/icons/sun.png" alt="Sun icon" class="hidden h-6 w-6 object-contain" />
-							<svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg"
-								class="h-6 w-6 text-slate-700 dark:text-slate-200" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M17.293 13.293A8 8 0 016.707 2.707 8 8 0 1017.293 13.293z"/>
-							</svg>
-						</button>
-					</li>
+			<div class="flex items-center gap-7">
+				<ul class="hidden items-center gap-7 md:flex">
+					<li><a href="#introduction" data-section="introduction" class="nav-link">Home</a></li>
+					<li><a href="#about" data-section="about" class="nav-link">About</a></li>
+					<li><a href="#skill" data-section="skill" class="nav-link">Skills</a></li>
+					<li><a href="#project" data-section="project" class="nav-link">Projects</a></li>
+					<li><a href="#contact" data-section="contact" class="nav-link">Contact</a></li>
 				</ul>
 
-				<button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false"
-					class="rounded-lg border border-slate-300 p-2 shadow-sm transition hover:bg-slate-100 md:hidden dark:border-slate-600 dark:hover:bg-slate-800">
-					<svg id="mobile-menu-icon-open" xmlns="http://www.w3.org/2000/svg"
-						fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-						stroke="currentColor" class="h-6 w-6 text-slate-700 dark:text-slate-200">
-						<path stroke-linecap="round" stroke-linejoin="round"
-							d="M3.75 6.75h16.5m-16.5 5.25h16.5m-16.5 5.25h16.5" />
-					</svg>
-					<svg id="mobile-menu-icon-close" xmlns="http://www.w3.org/2000/svg"
-						fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-						stroke="currentColor" class="hidden h-6 w-6 text-slate-700 dark:text-slate-200">
-						<path stroke-linecap="round" stroke-linejoin="round"
-							d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
-		</div>
+				<div class="flex items-center gap-2">
+					<button id="theme-toggle" type="button" class="icon-btn" aria-label="Toggle dark mode" aria-pressed="true">
+						<svg class="hidden dark:block" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4.5a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1.5a1 1 0 0 1-1 1zm0 15a1 1 0 0 1 1 1V22a1 1 0 1 1-2 0v-1.5a1 1 0 0 1 1-1zM4.5 12a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h1.5a1 1 0 0 1 1 1zm15 0a1 1 0 0 1 1-1H22a1 1 0 1 1 0 2h-1.5a1 1 0 0 1-1-1zM6.34 6.34a1 1 0 0 1-1.41 0L3.87 5.28a1 1 0 1 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zm12.73 12.73a1 1 0 0 1-1.41 0l-1.06-1.06a1 1 0 0 1 1.41-1.41l1.06 1.06a1 1 0 0 1 0 1.41zM6.34 17.66a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM19.07 4.93a1 1 0 0 1 0 1.41l-1.06 1.06a1 1 0 1 1-1.41-1.41l1.06-1.06a1 1 0 0 1 1.41 0zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
+						<svg class="dark:hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.64 13.03A9 9 0 0 1 10.97 2.36a1 1 0 0 0-1.3-1.17A11 11 0 1 0 22.81 14.33a1 1 0 0 0-1.17-1.3z"/></svg>
+					</button>
 
-		<div id="mobile-menu"
-			class="hidden border-t border-slate-200 bg-white px-6 py-4 shadow-md md:hidden dark:border-slate-700 dark:bg-slate-900">
-			<ul class="space-y-3 text-base font-medium text-slate-700 dark:text-slate-200">
-				<li><a href="#introduction" class="block rounded-md px-2 py-1 transition hover:bg-slate-100 dark:hover:bg-slate-800">Introduction</a></li>
-				<li><a href="#about" class="block rounded-md px-2 py-1 transition hover:bg-slate-100 dark:hover:bg-slate-800">About Me</a></li>
-				<li><a href="#skill" class="block rounded-md px-2 py-1 transition hover:bg-slate-100 dark:hover:bg-slate-800">Skill</a></li>
-				<li><a href="#project" class="block rounded-md px-2 py-1 transition hover:bg-slate-100 dark:hover:bg-slate-800">Project</a></li>
+					<button id="mobile-menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" class="icon-btn md:hidden">
+						<svg id="mobile-menu-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+						<svg id="mobile-menu-icon-close" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<div id="mobile-menu" class="hidden border-t border-[var(--rule)] bg-[var(--bg)] px-5 pb-5 pt-3 md:hidden">
+			<ul class="divide-y divide-[var(--rule)]">
+				<li><a href="#introduction" data-section="introduction" class="nav-link block !py-3.5 !text-lg">Home</a></li>
+				<li><a href="#about" data-section="about" class="nav-link block !py-3.5 !text-lg">About</a></li>
+				<li><a href="#skill" data-section="skill" class="nav-link block !py-3.5 !text-lg">Skills</a></li>
+				<li><a href="#project" data-section="project" class="nav-link block !py-3.5 !text-lg">Projects</a></li>
+				<li><a href="#contact" data-section="contact" class="nav-link block !py-3.5 !text-lg">Contact</a></li>
 			</ul>
 		</div>
-	</nav>
+	</header>
 
-	<main>
-		<section id="introduction" class="min-h-screen scroll-mt-20 px-6 pt-24">
-			<div class="mx-auto grid max-w-7xl items-center gap-10 md:h-[calc(100vh-6rem)] md:grid-cols-2">
-				<div class="space-y-6">
-					<h1 class="text-5xl font-extrabold leading-tight md:text-7xl">Ammar Zukri</h1>
-					<p class="text-lg text-slate-700 md:text-xl dark:text-slate-300">
-						<span id="typewriter-text" aria-live="polite"></span><span class="ml-1 inline-block animate-pulse">|</span>
+	<main id="main">
+
+		<!-- ===================== HERO ===================== -->
+		<section id="introduction" class="flex min-h-screen items-center px-5 pb-20 pt-32 sm:px-8">
+			<div class="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-[1.15fr_0.85fr]">
+
+				<div class="min-w-0">
+					<p class="reveal mono text-sm text-[var(--muted)]">Hi, I'm</p>
+
+					<h1 class="reveal mt-3 text-[clamp(3.4rem,10vw,7.5rem)] font-semibold leading-[0.92] tracking-[-0.03em]" style="--d:60ms">
+						Ammar<br />
+						<span class="relative inline-block">Zukri<span class="text-[var(--accent)]">.</span>
+							<svg class="scribble absolute -bottom-[0.32em] left-0" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 C 28 2, 55 11, 92 6 S 158 3, 197 7" pathLength="1"/></svg>
+						</span>
+					</h1>
+
+					<p class="reveal mono mt-8 text-base sm:text-lg" style="--d:140ms">
+						<span class="text-[var(--accent)]">&gt;</span>
+						<span id="typewriter-text">Software Developer</span><span class="cursor" aria-hidden="true"></span>
 					</p>
-					<a href="#" class="inline-flex w-fit items-center rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-slate-700 hover:shadow-lg dark:bg-slate-700 dark:hover:bg-slate-600">Download Resume</a>
+
+					<p class="reveal mt-6 max-w-xl text-lg leading-relaxed text-[var(--muted)]" style="--d:200ms">
+						I build web applications with Laravel and Spring Boot, and I care a lot about making them easy to use. Currently a junior developer, still learning something new every week.
+					</p>
+
+					<div class="reveal mt-9 flex flex-wrap items-center gap-4" style="--d:260ms">
+						<a href="#project" class="btn btn-primary">See my work <span aria-hidden="true">↓</span></a>
+						<!-- TODO: drop your resume PDF at assets/resume.pdf -->
+						<a href="assets/resume.pdf" download class="btn btn-plain">Download Resume</a>
+					</div>
+
+					<p class="reveal mono mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm" style="--d:320ms">
+						<a href="https://github.com/ammarzukri" target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
+						<a href="https://linkedin.com/in/ammarsyarifuddin/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+						<a href="https://www.instagram.com/aremarz_/" target="_blank" rel="noopener noreferrer" class="link">Instagram ↗</a>
+					</p>
 				</div>
-				<div class="flex justify-center md:justify-end">
-					<img
-						src="assets/images/Hero Image.jpg"
-						alt="Profile"
-						class="h-[70vh] w-full max-w-xl rounded-3xl object-cover shadow-[0_18px_40px_rgba(15,23,42,0.28)]"
-					/>
+
+				<div class="reveal mx-auto w-full min-w-0 max-w-sm pr-4 lg:mx-0 lg:max-w-md lg:justify-self-end" style="--d:120ms">
+					<div class="photo">
+						<img src="assets/images/Hero Image.jpg" alt="Portrait of Ammar Zukri" width="960" height="1280" fetchpriority="high" decoding="async" />
+					</div>
 				</div>
 			</div>
 		</section>
-		<hr class="mx-auto my-10 w-[92%] max-w-7xl border-slate-300 dark:border-slate-700" />
 
-		<section id="about" class="min-h-screen scroll-mt-20 px-6 pt-24">
-			<div class="mx-auto flex max-w-5xl flex-col items-center rounded-3xl bg-white px-8 py-10 shadow-sm md:h-[calc(100vh-6rem)] dark:bg-slate-900">
-				<h2 class="mb-16 text-center text-5xl font-bold md:text-6xl">About Me</h2>
-				<p class="text-center text-xl leading-relaxed text-slate-700 md:text-2xl dark:text-slate-300">
-					I am a passionate developer focused on creating user-friendly and high-performance websites.
-					I enjoy turning ideas into practical digital products and continuously learning new technologies
-					to improve my workflow. My goal is to build solutions that are both beautiful and useful.
-				</p>
+		<!-- ===================== ABOUT ===================== -->
+		<section id="about" class="section">
+			<div class="section-grid">
+				<h2 class="section-label reveal">about</h2>
+				<div class="reveal min-w-0" style="--d:80ms">
+					<p class="lead">
+						I am a passionate developer focused on creating user-friendly and high-performance websites.
+						I enjoy turning ideas into practical digital products and continuously learning new technologies
+						to improve my workflow. My goal is to build solutions that are both <span class="marker">beautiful and useful.</span>
+					</p>
+				</div>
 			</div>
 		</section>
-		<hr class="mx-auto my-10 w-[92%] max-w-7xl border-slate-300 dark:border-slate-700" />
 
-		<section id="skill" class="min-h-screen scroll-mt-20 px-6 pt-24">
-			<div class="mx-auto max-w-7xl md:h-[calc(100vh-6rem)]">
-				<h2 class="mb-12 text-center text-5xl font-bold md:text-6xl">Skill</h2>
-				<div class="mx-auto flex min-h-[500px] w-full items-center rounded-3xl border-2 border-slate-400 bg-slate-50 p-8 shadow-xl md:p-12 dark:border-slate-700 dark:bg-slate-800">
-					<div class="grid w-full grid-cols-2 gap-10 md:grid-cols-4">
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Java</span>
+		<!-- ===================== SKILLS ===================== -->
+		<section id="skill" class="section">
+			<div class="section-grid">
+				<h2 class="section-label reveal">skills</h2>
+				<div class="min-w-0">
+					<p class="lead reveal mb-10 max-w-2xl" style="--d:80ms">What I reach for when I'm building something.</p>
+
+					<div class="reveal" style="--d:140ms">
+						<div class="skill-row">
+							<h3 class="mono text-sm text-[var(--muted)]">backend</h3>
+							<div class="flex flex-wrap gap-3">
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="" width="24" height="24" loading="lazy" />Java</span>
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="" width="24" height="24" loading="lazy" />Spring Boot</span>
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="" width="24" height="24" loading="lazy" />Laravel</span>
+							</div>
 						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Spring Boot</span>
+						<div class="skill-row">
+							<h3 class="mono text-sm text-[var(--muted)]">frontend</h3>
+							<div class="flex flex-wrap gap-3">
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" width="24" height="24" loading="lazy" />JavaScript</span>
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="" width="24" height="24" loading="lazy" />Vue.js</span>
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="" width="24" height="24" loading="lazy" />Tailwind</span>
+							</div>
 						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">JavaScript</span>
-						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Laravel</span>
-						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Vue.js</span>
-						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Tailwind</span>
-						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Git</span>
-						</div>
-						<div class="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-slate-900">
-							<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" class="h-16 w-16" />
-							<span class="text-md font-semibold text-slate-800 dark:text-slate-200">Figma</span>
+						<div class="skill-row">
+							<h3 class="mono text-sm text-[var(--muted)]">tools</h3>
+							<div class="flex flex-wrap gap-3">
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" width="24" height="24" loading="lazy" />Git</span>
+								<span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" width="24" height="24" loading="lazy" />Figma</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<hr class="mx-auto my-10 w-[92%] max-w-7xl border-slate-300 dark:border-slate-700" />
 
-		<section id="project" class="min-h-screen scroll-mt-20 px-6 pt-24 pb-16">
-			<div class="mx-auto max-w-7xl">
-				<h2 class="mb-20 text-center text-5xl font-bold md:text-6xl">Project</h2>
+		<!-- ===================== PROJECTS ===================== -->
+		<section id="project" class="section">
+			<div class="section-grid">
+				<h2 class="section-label reveal">projects</h2>
+				<div class="min-w-0">
+					<p class="lead reveal mb-12 max-w-2xl" style="--d:80ms">A few things I've built. Click any of them to flip through the screenshots.</p>
 
-				<div class="relative">
-
-					<!-- CENTER LINE -->
-					<div class="absolute left-1/2 top-0 hidden h-full w-1 -translate-x-1/2 bg-slate-300 dark:bg-slate-600 md:block"></div>
-
-					<div class="space-y-20">
-
-						<!-- PROJECT 1 (LEFT) -->
-						<div class="relative md:flex md:items-center md:justify-between">
-							
-							<!-- DOT -->
-							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
-
-							<div class="md:w-5/12">
-								<article id="project-1" data-language="Java, Spring Boot, MySQL" class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="assets/images/Welcome Page.png" alt="Shop Inventory" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Shop Inventory Management System</h3>
-									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										Developed an Automated Inventory Handling System for wholesale shop using Java, Spring Boot, MySQL.
-									</p>
-									<a href="#" class="project-view-detail inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
-										View Detail
-									</a>
-								</article>
-							</div>
-
-							<div class="hidden md:block md:w-5/12"></div>
+					<article id="project-1" data-language="Java, Spring Boot, MySQL" class="project reveal">
+						<div class="project-text">
+							<span class="project-num">01</span>
+							<h3>Shop Inventory Management System</h3>
+							<p class="text-[var(--muted)]">Developed an Automated Inventory Handling System for wholesale shop using Java, Spring Boot, MySQL.</p>
+							<p class="tech"></p>
+							<a href="#" class="project-view-detail view-detail">View screenshots <span aria-hidden="true">→</span></a>
 						</div>
-
-
-						<!-- PROJECT 2 (RIGHT) -->
-						<div class="relative md:flex md:items-center md:justify-between">
-
-							<div class="hidden md:block md:w-5/12"></div>
-
-							<!-- DOT -->
-							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
-
-							<div class="md:w-5/12">
-								<article id="project-2" data-language="JavaScript, REST API" class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="assets/images/Project 2.jpg" alt="Price Comparison" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Price Comparison Website</h3>
-									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										Implemented a web application to compare prices across multiple e-commerce platforms using API.
-									</p>
-									<a href="#" class="project-view-detail inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
-										View Detail
-									</a>
-								</article>
+						<div class="project-shot">
+							<div class="browser">
+								<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+								<img src="assets/images/Welcome Page.png" alt="Shop Inventory Management System preview" width="1867" height="982" loading="lazy" decoding="async" />
 							</div>
 						</div>
+					</article>
 
-
-						<!-- PROJECT 3 (LEFT) -->
-						<div class="relative md:flex md:items-center md:justify-between">
-							
-							<!-- DOT -->
-							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
-
-							<div class="md:w-5/12">
-								<article id="project-3" data-language="HTML, CSS, JavaScript" class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="assets/images/Project 3.jpg" alt="Photography Portfolio" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Photography Portfolio Website</h3>
-									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										Developed both front-end and back-end components of the website using HTML, CSS, and JavaScript.
-									</p>
-									<a href="#" class="project-view-detail inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
-										View Detail
-									</a>
-								</article>
-							</div>
-
-							<div class="hidden md:block md:w-5/12"></div>
+					<article id="project-2" data-language="JavaScript, REST API" class="project reveal">
+						<div class="project-text">
+							<span class="project-num">02</span>
+							<h3>Price Comparison Website</h3>
+							<p class="text-[var(--muted)]">Implemented a web application to compare prices across multiple e-commerce platforms using API.</p>
+							<p class="tech"></p>
+							<a href="#" class="project-view-detail view-detail">View screenshots <span aria-hidden="true">→</span></a>
 						</div>
-
-
-						<!-- PROJECT 4 (RIGHT) -->
-						<div class="relative md:flex md:items-center md:justify-between">
-
-							<div class="hidden md:block md:w-5/12"></div>
-
-							<!-- DOT -->
-							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
-
-							<div class="md:w-5/12">
-								<article id="project-4" data-language="React, Laravel, HTML, Tailwind CSS, JavaScript, Weather API" class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="assets/images/Front Page.png" alt="Weather Forecast" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Weather Forecast</h3>
-									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										Website to display weather forecasts for various locations using a public weather API. Implemented user location detection and responsive design for optimal viewing on all devices.
-									</p>
-									<a href="#" class="project-view-detail inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
-										View Detail
-									</a>
-								</article>
+						<div class="project-shot">
+							<div class="browser">
+								<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+								<img src="assets/images/Project 2.jpg" alt="Price Comparison Website preview" loading="lazy" decoding="async" />
 							</div>
 						</div>
+					</article>
 
-
-						<!-- PROJECT 5 (LEFT)
-						<div class="relative md:flex md:items-center md:justify-between">
-							
-							DOT
-							<div class="absolute left-1/2 hidden h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 dark:border-slate-900 dark:bg-white md:block"></div>
-
-							<div class="md:w-5/12">
-								<article class="rounded-2xl border border-slate-300 bg-white/80 p-6 shadow-md transition hover:shadow-lg dark:border-slate-700 dark:bg-slate-800/80">
-									<img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80" alt="Asset management" class="mb-4 h-40 w-full rounded-lg object-cover" />
-									<h3 class="mb-3 text-xl font-semibold">Asset Management System</h3>
-									<p class="mb-4 text-base text-slate-700 dark:text-slate-300">
-										System to manage and track company assets efficiently.
-									</p>
-									<a href="#" class="inline-block rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200">
-										View Detail
-									</a>
-								</article>
+					<article id="project-3" data-language="HTML, CSS, JavaScript" class="project reveal">
+						<div class="project-text">
+							<span class="project-num">03</span>
+							<h3>Photography Portfolio Website</h3>
+							<p class="text-[var(--muted)]">Developed both front-end and back-end components of the website using HTML, CSS, and JavaScript.</p>
+							<p class="tech"></p>
+							<a href="#" class="project-view-detail view-detail">View screenshots <span aria-hidden="true">→</span></a>
+						</div>
+						<div class="project-shot">
+							<div class="browser">
+								<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+								<img src="assets/images/Project 3.jpg" alt="Photography Portfolio Website preview" loading="lazy" decoding="async" />
 							</div>
+						</div>
+					</article>
 
-							<div class="hidden md:block md:w-5/12"></div>
-						</div> -->
+					<article id="project-4" data-language="React, Laravel, HTML, Tailwind CSS, JavaScript, Weather API" class="project reveal">
+						<div class="project-text">
+							<span class="project-num">04</span>
+							<h3>Weather Forecast</h3>
+							<p class="text-[var(--muted)]">Website to display weather forecasts for various locations using a public weather API. Implemented user location detection and responsive design for optimal viewing on all devices.</p>
+							<p class="tech"></p>
+							<a href="#" class="project-view-detail view-detail">View screenshots <span aria-hidden="true">→</span></a>
+						</div>
+						<div class="project-shot">
+							<div class="browser">
+								<div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+								<img src="assets/images/Front Page.png" alt="Weather Forecast preview" loading="lazy" decoding="async" />
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</section>
 
+		<!-- ===================== CONTACT ===================== -->
+		<section id="contact" class="section pb-28">
+			<div class="section-grid">
+				<h2 class="section-label reveal">contact</h2>
+				<div class="min-w-0">
+					<p class="lead reveal max-w-2xl" style="--d:80ms">Have a project, a job, or just a question? <span class="marker">Drop me a line.</span></p>
+
+					<div class="reveal mt-10" style="--d:160ms">
+						<!-- TODO: replace with your real email address -->
+						<a href="mailto:ammarzukri35@gmail.com" class="big-mail link">ammarzukri35@gmail.com</a>
 					</div>
+
+					<p class="reveal mono mt-10 flex flex-wrap gap-x-7 gap-y-3 text-base" style="--d:220ms">
+						<a href="https://github.com/ammarzukri" target="_blank" rel="noopener noreferrer" class="link">GitHub ↗</a>
+						<a href="https://linkedin.com/in/ammarsyarifuddin/" target="_blank" rel="noopener noreferrer" class="link">LinkedIn ↗</a>
+						<a href="https://www.instagram.com/aremarz_/" target="_blank" rel="noopener noreferrer" class="link">Instagram ↗</a>
+						<!-- TODO: add your WhatsApp link (https://wa.me/<number>) and uncomment
+						<a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="link">WhatsApp ↗</a>
+						-->
+					</p>
 				</div>
 			</div>
 		</section>
 
 	</main>
 
-	<div id="project-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-slate-900/75 p-4">
-		<div id="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" class="w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-300 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
-			<div class="flex items-center justify-end border-b border-slate-200 px-4 py-3 dark:border-slate-700">
-				<button id="project-modal-close" type="button" aria-label="Close project detail" class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Close</button>
-			</div>
-			<div class="max-h-[85vh] overflow-y-auto">
-				<div class="relative">
-					<img id="project-modal-image" src="" alt="" class="h-72 w-full object-contain md:h-96" />
-					<button id="project-modal-prev" type="button" aria-label="Previous photo" class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 px-3 py-2 text-xl font-bold text-white transition hover:bg-slate-900 dark:bg-slate-100/90 dark:text-slate-900 dark:hover:bg-slate-100">‹</button>
-					<button id="project-modal-next" type="button" aria-label="Next photo" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 px-3 py-2 text-xl font-bold text-white transition hover:bg-slate-900 dark:bg-slate-100/90 dark:text-slate-900 dark:hover:bg-slate-100">›</button>
+	<!-- ===================== PROJECT MODAL ===================== -->
+	<div id="project-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/80 p-3 sm:p-6">
+		<div id="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" class="flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border-2 border-[var(--text)] bg-[var(--bg)]">
+			<div class="overflow-y-auto">
+				<div id="project-modal-stage" class="relative border-b-2 border-[var(--text)] bg-[var(--bg-alt)]">
+					<img id="project-modal-image" src="" alt="" class="h-64 w-full object-contain sm:h-80 md:h-[26rem]" />
+					<span id="project-modal-counter" class="counter" aria-live="polite"></span>
+					<button id="project-modal-close" type="button" aria-label="Close project detail" class="icon-btn absolute right-4 top-4 z-[3] !bg-[var(--bg)] hover:!bg-[var(--accent)] hover:!text-[var(--accent-ink)]">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+					</button>
+					<button id="project-modal-prev" type="button" aria-label="Previous photo" class="modal-nav left-3">‹</button>
+					<button id="project-modal-next" type="button" aria-label="Next photo" class="modal-nav right-3">›</button>
 				</div>
-				<p id="project-modal-image-name" class="border-b border-slate-200 px-6 py-3 text-center text-sm font-semibold text-slate-700 dark:border-slate-700 dark:text-slate-200"></p>
+
+				<div id="project-modal-thumbs" class="relative flex gap-2 overflow-x-auto border-b border-[var(--rule)] px-4 py-3" role="group" aria-label="Project screenshots"></div>
+
 				<div class="space-y-4 px-6 py-6 md:px-8 md:py-8">
-					<h3 id="project-modal-title" class="text-2xl font-bold md:text-3xl"></h3>
-					<p id="project-modal-description" class="text-base leading-relaxed text-slate-700 md:text-lg dark:text-slate-300"></p>
-					<p id="project-modal-language" class="text-sm font-semibold text-slate-800 md:text-base dark:text-slate-200"></p>
+					<p id="project-modal-image-name" class="mono text-sm text-[var(--accent)]"></p>
+					<h3 id="project-modal-title" class="text-3xl font-semibold tracking-tight md:text-4xl"></h3>
+					<div id="project-modal-chips" class="flex flex-wrap gap-2"></div>
+					<p id="project-modal-description" class="text-base leading-relaxed text-[var(--muted)] md:text-lg"></p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<footer class="border-t border-slate-300 bg-white py-10 shadow-inner dark:border-slate-700 dark:bg-slate-900">
-		<div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
-			<p class="text-sm text-slate-600 dark:text-slate-300">© 2026 Ammar Zukri</p>
-			<div class="flex items-center gap-4">
-				<a href="https://github.com/ammarzukri" target="_blank" aria-label="GitHub" class="group rounded-full bg-white p-2 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-900 hover:shadow-md dark:bg-slate-800 dark:hover:bg-slate-900">
-					<svg viewBox="0 0 24 24" class="h-6 w-6 fill-slate-700 transition-colors group-hover:fill-white dark:fill-slate-200" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.34-1.75-1.34-1.75-1.1-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.08 1.84 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.92 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.69.24 2.94.12 3.25.77.84 1.24 1.91 1.24 3.22 0 4.6-2.8 5.61-5.48 5.91.43.37.82 1.1.82 2.23v3.31c0 .32.22.69.82.58A12 12 0 0 0 12 .5z"/></svg>
-				</a>
-				<a href="https://linkedin.com/in/ammarsyarifuddin/" target="_blank" aria-label="LinkedIn" class="group rounded-full bg-white p-2 shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md dark:bg-slate-800 dark:hover:bg-blue-600">
-					<svg viewBox="0 0 24 24" class="h-6 w-6 fill-slate-700 transition-colors group-hover:fill-white dark:fill-slate-200" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.84v1.71h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.09V21h-4v-5.52c0-1.32-.02-3.01-1.84-3.01-1.84 0-2.12 1.43-2.12 2.91V21h-4V9z"/></svg>
-				</a>
-				<a href="https://www.instagram.com/aremarz_/" target="_blank" aria-label="Instagram" class="group rounded-full bg-white p-2 shadow-sm transition hover:-translate-y-0.5 hover:bg-pink-500 hover:shadow-md dark:bg-slate-800 dark:hover:bg-pink-500">
-					<svg viewBox="0 0 24 24" class="h-6 w-6 fill-slate-700 transition-colors group-hover:fill-white dark:fill-slate-200" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5zm8.95 1.35a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4z"/></svg>
-				</a>
-				<a href="#" aria-label="WhatsApp" target="_blank" class="group rounded-full bg-white p-2 shadow-sm transition hover:-translate-y-0.5 hover:bg-green-500 hover:shadow-md dark:bg-slate-800 dark:hover:bg-green-500">
-					<svg viewBox="0 0 24 24" class="h-6 w-6 fill-slate-700 transition-colors group-hover:fill-white dark:fill-slate-200" aria-hidden="true"><path d="M12.04 2C6.62 2 2.24 6.37 2.24 11.78c0 1.89.54 3.72 1.55 5.28L2 22l5.08-1.73a9.73 9.73 0 0 0 4.96 1.35h.01c5.41 0 9.79-4.38 9.79-9.79S17.45 2 12.04 2zm0 17.85h-.01a8.06 8.06 0 0 1-4.1-1.13l-.29-.17-3.02 1.03 1.01-2.95-.19-.3a8.02 8.02 0 0 1-1.23-4.28c0-4.44 3.61-8.05 8.04-8.05a8.05 8.05 0 0 1 8.05 8.05 8.05 8.05 0 0 1-8.26 7.8zm4.41-5.98c-.24-.12-1.41-.7-1.63-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.17-1.39-1.31-1.63-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.09 3.62.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.41-.58 1.61-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
-				</a>
-			</div>
+	<!-- ===================== FOOTER ===================== -->
+	<footer class="px-5 pb-10 sm:px-8">
+		<div class="mx-auto flex max-w-6xl items-center justify-between border-t border-[var(--rule)] pt-6 text-sm text-[var(--muted)]">
+			<p class="mono">© <span id="footer-year">2026</span> Ammar Zukri</p>
+			<a href="#introduction" class="mono link">Back to top ↑</a>
 		</div>
 	</footer>
+
 	<script>
-		const mobileMenuButton = document.getElementById('mobile-menu-btn');
-		const mobileMenu = document.getElementById('mobile-menu');
-		const mobileMenuIconOpen = document.getElementById('mobile-menu-icon-open');
-		const mobileMenuIconClose = document.getElementById('mobile-menu-icon-close');
-		let activeScrollAnimation = null;
+	(() => {
+		const $ = (selector, root = document) => root.querySelector(selector);
+		const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+		const root = document.documentElement;
 
-		const easeInOutCubic = (progress) => {
-			return progress < 0.5
-				? 4 * progress * progress * progress
-				: 1 - Math.pow(-2 * progress + 2, 3) / 2;
+		/* ---------------- Theme ---------------- */
+		const themeToggle = $('#theme-toggle');
+		const themeMeta = $('meta[name="theme-color"]');
+		const syncTheme = () => {
+			const isDark = root.classList.contains('dark');
+			themeToggle.setAttribute('aria-pressed', String(isDark));
+			if (themeMeta) themeMeta.setAttribute('content', isDark ? '#151412' : '#f3eee4');
 		};
-
-		const smoothScrollToSection = (targetSection) => {
-			if (!targetSection) return;
-			const navbar = document.querySelector('nav');
-			const navbarHeight = navbar ? navbar.offsetHeight : 0;
-			const targetPosition = Math.max(0, targetSection.getBoundingClientRect().top + window.scrollY - navbarHeight + 8);
-			const startPosition = window.scrollY;
-			const distance = targetPosition - startPosition;
-			const duration = 750;
-
-			if (Math.abs(distance) < 1) return;
-			if (activeScrollAnimation !== null) cancelAnimationFrame(activeScrollAnimation);
-
-			const startTime = performance.now();
-			const animate = (currentTime) => {
-				const elapsed = currentTime - startTime;
-				const progress = Math.min(elapsed / duration, 1);
-				const easedProgress = easeInOutCubic(progress);
-				window.scrollTo(0, startPosition + distance * easedProgress);
-
-				if (progress < 1) {
-					activeScrollAnimation = requestAnimationFrame(animate);
-				} else {
-					activeScrollAnimation = null;
-				}
-			};
-
-			activeScrollAnimation = requestAnimationFrame(animate);
-		};
-
-		const closeMobileMenu = () => {
-			if (!mobileMenuButton || !mobileMenu || !mobileMenuIconOpen || !mobileMenuIconClose) return;
-			mobileMenu.classList.add('hidden');
-			mobileMenuIconOpen.classList.remove('hidden');
-			mobileMenuIconClose.classList.add('hidden');
-			mobileMenuButton.setAttribute('aria-expanded', 'false');
-		};
-
-		if (mobileMenuButton && mobileMenu && mobileMenuIconOpen && mobileMenuIconClose) {
-			mobileMenuButton.addEventListener('click', () => {
-				const isHidden = mobileMenu.classList.contains('hidden');
-				if (isHidden) {
-					mobileMenu.classList.remove('hidden');
-					mobileMenuIconOpen.classList.add('hidden');
-					mobileMenuIconClose.classList.remove('hidden');
-					mobileMenuButton.setAttribute('aria-expanded', 'true');
-				} else {
-					closeMobileMenu();
-				}
-			});
-		}
-
-		document.querySelectorAll('nav a[href^="#"]').forEach((navLink) => {
-			navLink.addEventListener('click', (event) => {
-				const targetId = navLink.getAttribute('href');
-				if (!targetId || targetId === '#') return;
-				const targetSection = document.querySelector(targetId);
-				if (!targetSection) return;
-
-				event.preventDefault();
-				smoothScrollToSection(targetSection);
-				targetSection.classList.remove('section-pulse');
-				void targetSection.offsetWidth;
-				targetSection.classList.add('section-pulse');
-				closeMobileMenu();
-			});
+		syncTheme();
+		themeToggle.addEventListener('click', () => {
+			root.classList.toggle('dark');
+			try { localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light'); } catch (e) {}
+			syncTheme();
 		});
 
-		window.addEventListener('resize', () => {
-			if (window.innerWidth >= 768) closeMobileMenu();
-		});
+		/* ---------------- Scroll reveal ---------------- */
+		// Declared first so the nav click handler can replay a section's entrance animation.
+		let revealObserver = null;
+		const revealEls = $$('.reveal');
 
-		const pageSections = document.querySelectorAll('section');
 		if ('IntersectionObserver' in window) {
-			pageSections.forEach((section) => section.classList.add('section-reveal-ready'));
-
-			const sectionObserver = new IntersectionObserver((entries, observer) => {
+			revealObserver = new IntersectionObserver((entries, observer) => {
 				entries.forEach((entry) => {
 					if (!entry.isIntersecting) return;
-					entry.target.classList.add('section-reveal-visible');
+					entry.target.classList.add('is-visible');
 					observer.unobserve(entry.target);
 				});
-			}, {
-				threshold: 0.08,
-				rootMargin: '0px 0px -5% 0px'
-			});
-
-			pageSections.forEach((section) => sectionObserver.observe(section));
+			}, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+			revealEls.forEach((el) => revealObserver.observe(el));
 		} else {
-			pageSections.forEach((section) => {
-				section.classList.add('section-reveal-ready');
-				section.classList.add('section-reveal-visible');
-			});
+			revealEls.forEach((el) => el.classList.add('is-visible'));
 		}
 
-		const themeToggle = document.getElementById('theme-toggle');
-		const sunIcon = document.getElementById('theme-icon-sun');
-		const moonIcon = document.getElementById('theme-icon-moon');
-		const typewriterText = document.getElementById('typewriter-text');
-		const projectModal = document.getElementById('project-modal');
-		const projectModalPanel = document.getElementById('project-modal-panel');
-		const projectModalClose = document.getElementById('project-modal-close');
-		const projectModalImage = document.getElementById('project-modal-image');
-		const projectModalPrev = document.getElementById('project-modal-prev');
-		const projectModalNext = document.getElementById('project-modal-next');
-		const projectModalImageName = document.getElementById('project-modal-image-name');
-		const projectModalTitle = document.getElementById('project-modal-title');
-		const projectModalDescription = document.getElementById('project-modal-description');
-		const projectModalLanguage = document.getElementById('project-modal-language');
-		let activeProjectGallery = [];
-		let activeProjectGalleryIndex = 0;
+		// When you jump to a section from the navbar, rewind whatever is still off-screen
+		// in it so it plays its entrance animation as you arrive.
+		const replayReveal = (section) => {
+			if (!revealObserver) return;
+			$$('.reveal', section).forEach((el) => {
+				const rect = el.getBoundingClientRect();
+				if (rect.top < window.innerHeight && rect.bottom > 0) return; // already on screen
+				el.classList.remove('is-visible');
+				revealObserver.observe(el);
+			});
+		};
+
+		/* ---------------- Eased smooth scroll (always animated) ---------------- */
+		let activeScrollAnimation = null;
+		const easeInOutCubic = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+
+		const cancelScrollAnimation = () => {
+			if (activeScrollAnimation !== null) {
+				cancelAnimationFrame(activeScrollAnimation);
+				activeScrollAnimation = null;
+			}
+		};
+
+		const smoothScrollToSection = (target) => {
+			if (!target) return;
+			const targetY = target.id === 'introduction' ? 0 : Math.max(0, target.getBoundingClientRect().top + window.scrollY);
+			const startY = window.scrollY;
+			const distance = targetY - startY;
+			if (Math.abs(distance) < 2) return;
+
+			if (Math.abs(distance) > 80) replayReveal(target);
+
+			cancelScrollAnimation();
+			const duration = Math.min(1500, 750 + Math.abs(distance) * 0.22);
+			const startTime = performance.now();
+			const step = (now) => {
+				const progress = Math.min((now - startTime) / duration, 1);
+				window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+				activeScrollAnimation = progress < 1 ? requestAnimationFrame(step) : null;
+			};
+			activeScrollAnimation = requestAnimationFrame(step);
+		};
+
+		// Let the user grab control mid-animation
+		['wheel', 'touchstart'].forEach((evt) =>
+			window.addEventListener(evt, cancelScrollAnimation, { passive: true })
+		);
+
+		/* ---------------- Mobile menu ---------------- */
+		const mobileMenuButton = $('#mobile-menu-btn');
+		const mobileMenu = $('#mobile-menu');
+		const iconOpen = $('#mobile-menu-icon-open');
+		const iconClose = $('#mobile-menu-icon-close');
+
+		const closeMobileMenu = () => {
+			mobileMenu.classList.add('hidden');
+			iconOpen.classList.remove('hidden');
+			iconClose.classList.add('hidden');
+			mobileMenuButton.setAttribute('aria-expanded', 'false');
+			mobileMenuButton.setAttribute('aria-label', 'Open menu');
+		};
+
+		mobileMenuButton.addEventListener('click', () => {
+			if (mobileMenu.classList.contains('hidden')) {
+				mobileMenu.classList.remove('hidden');
+				iconOpen.classList.add('hidden');
+				iconClose.classList.remove('hidden');
+				mobileMenuButton.setAttribute('aria-expanded', 'true');
+				mobileMenuButton.setAttribute('aria-label', 'Close menu');
+			} else {
+				closeMobileMenu();
+			}
+		});
+		window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeMobileMenu(); });
+
+		/* ---------------- Anchor links (navbar, hero buttons, back to top) ---------------- */
+		$$('a[href^="#"]').forEach((link) => {
+			link.addEventListener('click', (event) => {
+				const hash = link.getAttribute('href');
+				if (!hash || hash === '#') return;
+				const target = $(hash);
+				if (!target) return;
+				event.preventDefault();
+				closeMobileMenu();
+				smoothScrollToSection(target);
+				try { history.replaceState(null, '', hash); } catch (e) {}
+			});
+		});
+
+		/* ---------------- Scrollspy + progress bar ---------------- */
+		const navLinks = $$('.nav-link');
+		const progressBar = $('#scroll-progress');
+		const sections = $$('main section[id]');
+
+		const setActiveLink = (id) => {
+			navLinks.forEach((link) => {
+				const isActive = link.dataset.section === id;
+				link.classList.toggle('is-active', isActive);
+				if (isActive) link.setAttribute('aria-current', 'true');
+				else link.removeAttribute('aria-current');
+			});
+		};
+		setActiveLink('introduction');
+
+		if ('IntersectionObserver' in window) {
+			const spy = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => { if (entry.isIntersecting) setActiveLink(entry.target.id); });
+			}, { rootMargin: '-40% 0px -55% 0px' });
+			sections.forEach((section) => spy.observe(section));
+		}
+
+		let scrollTicking = false;
+		const onScroll = () => {
+			if (scrollTicking) return;
+			scrollTicking = true;
+			requestAnimationFrame(() => {
+				const maxScroll = root.scrollHeight - window.innerHeight;
+				progressBar.style.transform = `scaleX(${maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0})`;
+				if (window.scrollY < 80) setActiveLink('introduction');
+				else if (maxScroll > 0 && window.scrollY >= maxScroll - 4) setActiveLink('contact');
+				scrollTicking = false;
+			});
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		window.addEventListener('resize', onScroll);
+		onScroll();
+
+		/* ---------------- Typewriter ---------------- */
+		const typewriterText = $('#typewriter-text');
+		if (typewriterText) {
+			const titles = ['Software Developer', 'Software Engineer'];
+			const sharedPrefix = 'Software ';
+			let titleIndex = 0;
+			let displayedText = '';
+			let isDeleting = false;
+
+			const runTypewriter = () => {
+				const currentTitle = titles[titleIndex];
+
+				if (!isDeleting) {
+					displayedText = currentTitle.slice(0, displayedText.length + 1);
+					typewriterText.textContent = displayedText;
+					if (displayedText === currentTitle) {
+						isDeleting = true;
+						setTimeout(runTypewriter, 1600);
+						return;
+					}
+					setTimeout(runTypewriter, 95);
+					return;
+				}
+
+				displayedText = displayedText.slice(0, -1);
+				typewriterText.textContent = displayedText;
+				if (displayedText === sharedPrefix) {
+					isDeleting = false;
+					titleIndex = (titleIndex + 1) % titles.length;
+					setTimeout(runTypewriter, 220);
+					return;
+				}
+				setTimeout(runTypewriter, 60);
+			};
+
+			typewriterText.textContent = '';
+			runTypewriter();
+		}
+
+		/* ---------------- Project rows ---------------- */
+		const splitTech = (value) => (value || '').split(',').map((item) => item.trim()).filter(Boolean);
+
+		$$('#project article').forEach((card) => {
+			const techLine = $('.tech', card);
+			if (techLine) techLine.textContent = splitTech(card.dataset.language).join(' / ');
+		});
+
+		/* ---------------- Project modal / gallery ---------------- */
+		const projectModal = $('#project-modal');
+		const modalPanel = $('#project-modal-panel');
+		const modalStage = $('#project-modal-stage');
+		const modalClose = $('#project-modal-close');
+		const modalImage = $('#project-modal-image');
+		const modalPrev = $('#project-modal-prev');
+		const modalNext = $('#project-modal-next');
+		const modalCounter = $('#project-modal-counter');
+		const modalThumbs = $('#project-modal-thumbs');
+		const modalImageName = $('#project-modal-image-name');
+		const modalTitle = $('#project-modal-title');
+		const modalChips = $('#project-modal-chips');
+		const modalDescription = $('#project-modal-description');
+
+		let activeGallery = [];
+		let activeIndex = 0;
+		let lastFocused = null;
 
 		const projectGalleries = {
 			'project-1': [
@@ -515,158 +583,155 @@
 			'project-4': [
 				{ src: 'assets/images/Front Page.png', name: 'Weather Forecast' },
 				{ src: 'assets/images/Result Page.png', name: 'Result Page' }
-			],
+			]
 		};
 
-		if (typewriterText) {
-			const titles = ['Software Developer', 'Software Engineer'];
-			const sharedPrefix = 'Software ';
-			let titleIndex = 0;
-			let displayedText = '';
-			let isDeleting = false;
+		const renderModalImage = () => {
+			if (!activeGallery.length) return;
+			const photo = activeGallery[activeIndex];
+			modalImage.classList.add('opacity-0');
+			const show = () => modalImage.classList.remove('opacity-0');
+			modalImage.onload = show;
+			modalImage.onerror = show;
+			modalImage.src = photo.src;
+			modalImage.alt = photo.name;
+			modalImageName.textContent = photo.name;
+			modalCounter.textContent = `${activeIndex + 1} / ${activeGallery.length}`;
 
-			const runTypewriter = () => {
-				const currentTitle = titles[titleIndex];
-
-				if (!isDeleting) {
-					displayedText = currentTitle.slice(0, displayedText.length + 1);
-					typewriterText.textContent = displayedText;
-
-					if (displayedText === currentTitle) {
-						isDeleting = true;
-						setTimeout(runTypewriter, 1200);
-						return;
-					}
-
-					setTimeout(runTypewriter, 95);
-					return;
+			$$('button', modalThumbs).forEach((thumb, i) => {
+				const isActive = i === activeIndex;
+				thumb.classList.toggle('is-active', isActive);
+				thumb.setAttribute('aria-current', String(isActive));
+				if (isActive) {
+					modalThumbs.scrollTo({
+						left: thumb.offsetLeft - modalThumbs.clientWidth / 2 + thumb.clientWidth / 2,
+						behavior: 'smooth'
+					});
 				}
-
-				displayedText = displayedText.slice(0, displayedText.length - 1);
-				typewriterText.textContent = displayedText;
-
-				if (displayedText === sharedPrefix) {
-					isDeleting = false;
-					titleIndex = (titleIndex + 1) % titles.length;
-					setTimeout(runTypewriter, 220);
-					return;
-				}
-
-				setTimeout(runTypewriter, 60);
-			};
-
-			runTypewriter();
-		}
-
-		const renderProjectModalImage = () => {
-			if (!projectModalImage || !projectModalImageName || activeProjectGallery.length === 0) return;
-			const currentPhoto = activeProjectGallery[activeProjectGalleryIndex];
-			projectModalImage.src = currentPhoto.src;
-			projectModalImage.alt = currentPhoto.name;
-			projectModalImageName.textContent = currentPhoto.name;
+			});
 		};
 
-		const openProjectModal = ({ imageSrc, imageAlt, title, description, language }) => {
-			if (!projectModal || !projectModalImage || !projectModalTitle || !projectModalDescription || !projectModalLanguage) return;
-			activeProjectGallery = imageSrc;
-			activeProjectGalleryIndex = 0;
-			renderProjectModalImage();
-			projectModalTitle.textContent = title;
-			projectModalDescription.textContent = description;
-			projectModalLanguage.textContent = `Language Used: ${language}`;
+		const goToPhoto = (nextIndex) => {
+			if (activeGallery.length <= 1) return;
+			activeIndex = (nextIndex + activeGallery.length) % activeGallery.length;
+			renderModalImage();
+		};
+
+		const buildThumbs = () => {
+			modalThumbs.textContent = '';
+			activeGallery.forEach((photo, i) => {
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.className = 'thumb-btn';
+				btn.setAttribute('aria-label', `Show ${photo.name}`);
+				const img = document.createElement('img');
+				img.src = photo.src;
+				img.alt = '';
+				img.loading = 'lazy';
+				img.decoding = 'async';
+				btn.appendChild(img);
+				btn.addEventListener('click', () => { activeIndex = i; renderModalImage(); });
+				modalThumbs.appendChild(btn);
+			});
+		};
+
+		const openProjectModal = ({ gallery, title, description, technologies }) => {
+			activeGallery = gallery;
+			activeIndex = 0;
+			const multiple = gallery.length > 1;
+			modalPrev.hidden = !multiple;
+			modalNext.hidden = !multiple;
+			modalThumbs.hidden = !multiple;
+			modalCounter.hidden = !multiple;
+
+			buildThumbs();
+			renderModalImage();
+			modalTitle.textContent = title;
+			modalDescription.textContent = description;
+			modalChips.textContent = '';
+			technologies.forEach((tech) => {
+				const tag = document.createElement('span');
+				tag.className = 'tag';
+				tag.textContent = tech;
+				modalChips.appendChild(tag);
+			});
+
 			projectModal.classList.remove('hidden');
 			projectModal.classList.add('flex');
 			document.body.classList.add('overflow-hidden');
+			modalClose.focus();
 		};
 
 		const closeProjectModal = () => {
-			if (!projectModal || !projectModalImage) return;
 			projectModal.classList.remove('flex');
 			projectModal.classList.add('hidden');
-			projectModalImage.src = '';
-			if (projectModalImageName) projectModalImageName.textContent = '';
-			activeProjectGallery = [];
-			activeProjectGalleryIndex = 0;
+			modalImage.onload = null;
+			modalImage.onerror = null;
+			modalImage.removeAttribute('src');
+			activeGallery = [];
+			activeIndex = 0;
 			document.body.classList.remove('overflow-hidden');
+			if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+			lastFocused = null;
 		};
 
-		document.querySelectorAll('#project .project-view-detail').forEach((detailButton) => {
+		$$('#project .project-view-detail').forEach((detailButton) => {
 			detailButton.addEventListener('click', (event) => {
 				event.preventDefault();
-				const projectCard = detailButton.closest('article');
-				if (!projectCard) return;
+				const card = detailButton.closest('article');
+				if (!card) return;
 
-				const projectImage = projectCard.querySelector('img');
-				const projectTitle = projectCard.querySelector('h3');
-				const projectDescription = projectCard.querySelector('p');
+				const cardImage = $('img', card);
+				const cardTitle = $('h3', card);
+				const cardDescription = $('p', card);
+				lastFocused = detailButton;
 
 				openProjectModal({
-					imageSrc: projectCard.id && projectGalleries[projectCard.id]
-						? projectGalleries[projectCard.id]
-						: [{ src: projectImage ? projectImage.src : '', name: projectImage ? projectImage.alt : 'Project image' }],
-					imageAlt: projectImage ? projectImage.alt : 'Project image',
-					title: projectTitle ? projectTitle.textContent.trim() : 'Project Detail',
-					description: projectDescription ? projectDescription.textContent.trim() : '',
-					language: projectCard.dataset.language || 'Not specified'
+					gallery: projectGalleries[card.id] || [{ src: cardImage ? cardImage.src : '', name: cardImage ? cardImage.alt : 'Project image' }],
+					title: cardTitle ? cardTitle.textContent.trim() : 'Project Detail',
+					description: cardDescription ? cardDescription.textContent.trim() : '',
+					technologies: splitTech(card.dataset.language)
 				});
 			});
 		});
 
-		if (projectModalPrev) {
-			projectModalPrev.addEventListener('click', () => {
-				if (activeProjectGallery.length <= 1) return;
-				activeProjectGalleryIndex = (activeProjectGalleryIndex - 1 + activeProjectGallery.length) % activeProjectGallery.length;
-				renderProjectModalImage();
-			});
-		}
+		modalPrev.addEventListener('click', () => goToPhoto(activeIndex - 1));
+		modalNext.addEventListener('click', () => goToPhoto(activeIndex + 1));
+		modalClose.addEventListener('click', closeProjectModal);
+		projectModal.addEventListener('click', (event) => { if (event.target === projectModal) closeProjectModal(); });
 
-		if (projectModalNext) {
-			projectModalNext.addEventListener('click', () => {
-				if (activeProjectGallery.length <= 1) return;
-				activeProjectGalleryIndex = (activeProjectGalleryIndex + 1) % activeProjectGallery.length;
-				renderProjectModalImage();
-			});
-		}
-
-		if (projectModalClose) {
-			projectModalClose.addEventListener('click', closeProjectModal);
-		}
-
-		if (projectModal) {
-			projectModal.addEventListener('click', (event) => {
-				if (event.target !== projectModal) return;
-				closeProjectModal();
-			});
-		}
+		// Swipe on touch devices
+		let touchStartX = null;
+		modalStage.addEventListener('touchstart', (event) => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
+		modalStage.addEventListener('touchend', (event) => {
+			if (touchStartX === null) return;
+			const deltaX = event.changedTouches[0].clientX - touchStartX;
+			touchStartX = null;
+			if (Math.abs(deltaX) > 50) goToPhoto(activeIndex + (deltaX < 0 ? 1 : -1));
+		}, { passive: true });
 
 		document.addEventListener('keydown', (event) => {
-			if (event.key !== 'Escape') return;
-			if (!projectModal || projectModal.classList.contains('hidden')) return;
-			closeProjectModal();
+			if (projectModal.classList.contains('hidden')) return;
+
+			if (event.key === 'Escape') { closeProjectModal(); return; }
+			if (event.key === 'ArrowRight') { goToPhoto(activeIndex + 1); return; }
+			if (event.key === 'ArrowLeft') { goToPhoto(activeIndex - 1); return; }
+
+			if (event.key === 'Tab') {
+				const focusable = $$('button, [href]', modalPanel).filter((el) => !el.hidden && el.offsetParent !== null);
+				if (!focusable.length) return;
+				const first = focusable[0];
+				const last = focusable[focusable.length - 1];
+				if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+				else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+				else if (!modalPanel.contains(document.activeElement)) { event.preventDefault(); first.focus(); }
+			}
 		});
 
-		if (localStorage.getItem('theme') === 'dark') {
-			document.documentElement.classList.add('dark');
-			sunIcon.classList.remove('hidden');
-			moonIcon.classList.add('hidden');
-		}
-
-		if (themeToggle) {
-			themeToggle.addEventListener('click', () => {
-				document.documentElement.classList.toggle('dark');
-				const isDark = document.documentElement.classList.contains('dark');
-
-				if (isDark) {
-					localStorage.setItem('theme', 'dark');
-					sunIcon.classList.remove('hidden');
-					moonIcon.classList.add('hidden');
-				} else {
-					localStorage.setItem('theme', 'light');
-					sunIcon.classList.add('hidden');
-					moonIcon.classList.remove('hidden');
-				}
-			});
-		}
+		/* ---------------- Footer year ---------------- */
+		const yearEl = $('#footer-year');
+		if (yearEl) yearEl.textContent = new Date().getFullYear();
+	})();
 	</script>
 </body>
 </html>
